@@ -8,8 +8,8 @@ android {
         applicationId "fr.meteordesign.giftoforzhova"
         minSdkVersion Sdk.minVersion
         targetSdkVersion Sdk.targetVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode AppVersion.code
+        versionName AppVersion.name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
