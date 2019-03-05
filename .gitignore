@@ -1,0 +1,10 @@
+# Generated files
+build/
+.gradle/
+.idea/
+*.iml
+.DS_Store
+
+# User
+local.properties
+captures/
