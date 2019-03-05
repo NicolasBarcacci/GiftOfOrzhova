@@ -1,1 +1,3 @@
 include ':GiftOfOrzhova'
+
+rootProject.children.each { module -> module.buildFileName = "${module.name}.gradle" }
