@@ -2,6 +2,7 @@ private object DependenciesVersions {
     const val androidXAppCompat = "1.0.2"
     const val constraintLayout = "1.1.3"
     const val dagger = "2.21"
+    const val navigation = "1.0.0-rc02"
     const val androidXCoreKtx = "1.0.1"
     const val timber = "4.7.1"
 
@@ -26,6 +27,10 @@ object Dependencies {
     const val daggerAndroid = "com.google.dagger:dagger-android:${DependenciesVersions.dagger}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${DependenciesVersions.dagger}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${DependenciesVersions.dagger}"
+
+    // Guide : https://developer.android.com/topic/libraries/architecture/navigation/navigation-implementing
+    // Artifact : https://mvnrepository.com/artifact/android.arch.navigation/navigation-fragment
+    const val navigation = "android.arch.navigation:navigation-fragment:${DependenciesVersions.navigation}"
 
     // Guide : https://developer.android.com/kotlin/ktx#kotlin
     // Artifact : https://mvnrepository.com/artifact/androidx.core/core-ktx
