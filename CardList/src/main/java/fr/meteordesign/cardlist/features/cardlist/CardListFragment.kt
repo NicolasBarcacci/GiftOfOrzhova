@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerFragment
+import fr.giftoforzhova.common.entities.Card
 import fr.giftoforzhova.common.navigation.Navigator
 import fr.meteordesign.cardlist.R
 import kotlinx.android.synthetic.main.fragment_cardlist.*
@@ -16,6 +17,8 @@ class CardListFragment : DaggerFragment() {
     @Inject
     lateinit var navigator: Navigator
 
+    private val cardListRecyclerViewAdapter = CardListRecyclerViewAdapter()
+
     private val viewModel = CardListViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -23,6 +26,8 @@ class CardListFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        cardList_RecyclerView.adapter = cardListRecyclerViewAdapter
 
         viewModel.state.observe(this, Observer { onStateChange(it) })
     }
@@ -40,10 +45,11 @@ class CardListFragment : DaggerFragment() {
     private fun gotToCardListState(state: State.CardList) {
         noCardMessage_cardList_TextView.visibility = View.GONE
         cardList_RecyclerView.visibility = View.VISIBLE
+        cardListRecyclerViewAdapter.submitList(state.cards)
     }
 }
 
 sealed class State {
     object NoCard : State()
-    class CardList(val cards: List<String>) : State()
+    class CardList(val cards: List<Card>) : State()
 }
