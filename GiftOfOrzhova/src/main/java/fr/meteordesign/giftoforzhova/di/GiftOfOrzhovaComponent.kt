@@ -8,7 +8,8 @@ import fr.meteordesign.giftoforzhova.GiftOfOrzhovaApplication
 @Component(
     modules = [
         AndroidInjectionModule::class,
-        GiftOfOrzhovaModule::class
+        GiftOfOrzhovaModule::class,
+        ActivityInjector::class
     ]
 )
 interface GiftOfOrzhovaComponent : AndroidInjector<GiftOfOrzhovaApplication> {
