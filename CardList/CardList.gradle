@@ -25,6 +25,7 @@ dependencies {
 
     implementation Dependencies.androidXAppCompat
     implementation Dependencies.constraintLayout
+    implementation Dependencies.recyclerView
 
     kapt Dependencies.daggerCompiler
     kapt Dependencies.daggerAndroidProcessor
