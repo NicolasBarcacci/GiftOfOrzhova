@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -6,7 +6,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion Sdk.compileVersion
     defaultConfig {
-        applicationId "fr.meteordesign.giftoforzhova"
         minSdkVersion Sdk.minVersion
         targetSdkVersion Sdk.targetVersion
         versionCode AppVersion.code
@@ -38,5 +37,4 @@ dependencies {
     testImplementation Dependencies.junit
 
     implementation project(":Common")
-    implementation project(":CardList")
 }
