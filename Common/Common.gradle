@@ -25,6 +25,7 @@ dependencies {
     implementation Dependencies.constraintLayout
 
     implementation Dependencies.androidXCoreKTX
+    implementation Dependencies.timber
 
     testImplementation Dependencies.junit
 }

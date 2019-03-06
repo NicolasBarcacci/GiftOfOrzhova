@@ -28,4 +28,6 @@ dependencies {
     implementation Dependencies.androidXCoreKTX
 
     testImplementation Dependencies.junit
+
+    implementation project(":Common")
 }
