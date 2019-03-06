@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/cardListFragment"
-        android:name="fr.meteordesign.cardlist.CardListFragment"
+        android:name="fr.meteordesign.cardlist.features.cardlist.CardListFragment"
         android:label="CardListFragment" />
 </navigation>
