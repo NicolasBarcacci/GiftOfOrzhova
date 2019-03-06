@@ -31,10 +31,12 @@ dependencies {
     implementation Dependencies.dagger
     implementation Dependencies.daggerAndroid
     implementation Dependencies.daggerAndroidSupport
+    implementation Dependencies.navigation
 
     implementation Dependencies.androidXCoreKTX
 
     testImplementation Dependencies.junit
 
     implementation project(":Common")
+    implementation project(":CardList")
 }
