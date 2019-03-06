@@ -20,11 +20,8 @@ android {
 
 dependencies {
     implementation Dependencies.kotlinStdlib
-
-    implementation Dependencies.androidXAppCompat
-    implementation Dependencies.constraintLayout
-
     implementation Dependencies.androidXCoreKTX
+
     implementation Dependencies.timber
 
     testImplementation Dependencies.junit
