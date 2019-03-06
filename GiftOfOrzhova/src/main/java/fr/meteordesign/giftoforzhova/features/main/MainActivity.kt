@@ -1,7 +1,8 @@
-package fr.meteordesign.giftoforzhova
+package fr.meteordesign.giftoforzhova.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import fr.meteordesign.giftoforzhova.R
 
 class MainActivity : AppCompatActivity() {
 
