@@ -22,6 +22,7 @@ android {
 
 dependencies {
     implementation Dependencies.kotlinStdlib
+    implementation Dependencies.androidXCoreKTX
 
     implementation Dependencies.androidXAppCompat
     implementation Dependencies.constraintLayout
@@ -32,8 +33,6 @@ dependencies {
     implementation Dependencies.daggerAndroid
     implementation Dependencies.daggerAndroidSupport
     implementation Dependencies.navigation
-
-    implementation Dependencies.androidXCoreKTX
 
     testImplementation Dependencies.junit
 

@@ -41,7 +41,7 @@ object Dependencies {
     // Artifact : https://mvnrepository.com/artifact/android.arch.navigation/navigation-fragment
     const val navigation = "android.arch.navigation:navigation-fragment:${DependenciesVersions.navigation}"
 
-    
+
     // https://github.com/JakeWharton/timber
     const val timber = "com.jakewharton.timber:timber:${DependenciesVersions.timber}"
 
