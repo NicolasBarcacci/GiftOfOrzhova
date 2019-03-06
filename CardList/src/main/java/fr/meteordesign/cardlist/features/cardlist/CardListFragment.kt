@@ -15,5 +15,5 @@ class CardListFragment : DaggerFragment() {
     lateinit var navigator: Navigator
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_card_list, container, false)
+        inflater.inflate(R.layout.fragment_cardlist, container, false)
 }

@@ -11,5 +11,5 @@ class CardListNavigationModule {
 
     @Provides
     @Named(Navigator.CARD_LIST_GRAPH_RES)
-    fun provideCardListGraphRes(): Int = R.navigation.navigation_card_list
+    fun provideCardListGraphRes(): Int = R.navigation.navigation_cardlist
 }

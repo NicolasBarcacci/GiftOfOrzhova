@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_card_list"
-    app:startDestination="@id/cardListFragment">
+    app:startDestination="@id/cardList_fragment">
 
     <fragment
-        android:id="@+id/cardListFragment"
+        android:id="@+id/cardList_fragment"
         android:name="fr.meteordesign.cardlist.features.cardlist.CardListFragment"
         android:label="CardListFragment" />
 </navigation>
