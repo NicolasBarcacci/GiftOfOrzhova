@@ -1,7 +1,8 @@
 private object DependenciesVersions {
-    const val androidXCoreKtx = "1.0.1"
     const val androidXAppCompat = "1.0.2"
     const val constraintLayout = "1.1.3"
+    const val androidXCoreKtx = "1.0.1"
+    const val timber = "4.7.1"
 
     const val junit = "4.12"
 }
@@ -21,6 +22,9 @@ object Dependencies {
     // Guide : https://developer.android.com/kotlin/ktx#kotlin
     // Artifact : https://mvnrepository.com/artifact/androidx.core/core-ktx
     const val androidXCoreKTX = "androidx.core:core-ktx:${DependenciesVersions.androidXCoreKtx}"
+
+    // https://github.com/JakeWharton/timber
+    const val timber = "com.jakewharton.timber:timber:${DependenciesVersions.timber}"
 
     // https://github.com/junit-team/junit4
     const val junit = "junit:junit:${DependenciesVersions.junit}"
