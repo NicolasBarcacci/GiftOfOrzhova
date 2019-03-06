@@ -24,6 +24,8 @@ dependencies {
     implementation Dependencies.androidXAppCompat
     implementation Dependencies.constraintLayout
 
+    implementation Dependencies.navigation
+
     implementation Dependencies.androidXCoreKTX
 
     testImplementation Dependencies.junit
