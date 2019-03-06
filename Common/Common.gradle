@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Sdk.compileVersion
+    defaultConfig {
+        minSdkVersion Sdk.minVersion
+        targetSdkVersion Sdk.targetVersion
+        versionCode AppVersion.code
+        versionName AppVersion.name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation Dependencies.kotlinStdlib
+
+    implementation Dependencies.androidXAppCompat
+    implementation Dependencies.constraintLayout
+
+    implementation Dependencies.androidXCoreKTX
+
+    testImplementation Dependencies.junit
+}
