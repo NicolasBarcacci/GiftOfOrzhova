@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion Sdk.compileVersion
@@ -17,6 +18,8 @@ android {
 }
 
 dependencies {
+    implementation Dependencies.kotlinStdlib
+
     implementation Dependencies.androidXAppCompat
     implementation Dependencies.constraintLayout
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppThemeSimic" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primary_simic</item>
+        <item name="colorPrimaryDark">@color/primaryDark_simic</item>
+        <item name="colorAccent">@color/accent_simic</item>
+    </style>
+</resources>

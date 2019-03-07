@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppThemeRakdos" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primary_rakdos</item>
+        <item name="colorPrimaryDark">@color/primaryDark_rakdos</item>
+        <item name="colorAccent">@color/accent_rakdos</item>
+    </style>
+</resources>
