@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion Sdk.compileVersion
+    defaultConfig {
+        minSdkVersion Sdk.minVersion
+        targetSdkVersion Sdk.targetVersion
+        versionCode AppVersion.code
+        versionName AppVersion.name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation Dependencies.androidXAppCompat
+    implementation Dependencies.constraintLayout
+}
