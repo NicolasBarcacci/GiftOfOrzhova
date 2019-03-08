@@ -13,7 +13,10 @@ class MainActivity : DaggerAppCompatActivity(), Navigator.Listener {
     @Inject
     lateinit var navigator: Navigator
 
+    private val viewModel = MainViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(viewModel.appTheme.themeResId)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
