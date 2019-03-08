@@ -39,5 +39,6 @@ dependencies {
 
     implementation project(":Common")
     implementation project(":Ui")
+    implementation project(":Repository")
     implementation project(":CardList")
 }
