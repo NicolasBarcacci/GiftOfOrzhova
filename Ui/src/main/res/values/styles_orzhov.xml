@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppThemeOrzhov" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_orzhov</item>
+        <item name="colorPrimaryDark">@color/primaryDark_orzhov</item>
+        <item name="colorAccent">@color/accent_orzhov</item>
+    </style>
+</resources>

@@ -2,22 +2,55 @@ package fr.meteordesign.giftoforzhova.features.main
 
 import android.os.Bundle
 import androidx.annotation.NavigationRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import fr.giftoforzhova.common.navigation.Navigator
 import fr.meteordesign.giftoforzhova.R
+import fr.meteordesign.ui.UiAppTheme
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity(), Navigator.Listener {
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, Navigator.Listener {
+
+    @Inject
+    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+
+    @Inject
+    lateinit var viewModel: MainViewModel
+
+    private lateinit var appTheme: UiAppTheme
 
     @Inject
     lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        appTheme = initTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initToolbar()
+
         navigator.navigateToCardList(this)
+    }
+
+    private fun initTheme(): UiAppTheme = viewModel.appTheme.also {
+        setTheme(it.themeResId)
+    }
+
+    private fun initToolbar() {
+        val isDark = resources.getBoolean(appTheme.darkOnPrimaryResId)
+        toolbar_main_stub.apply {
+            layoutResource = if (isDark) R.layout.appbarlayout_main_dark else R.layout.appbarlayout_main_light
+            inflate()
+        }
+        setSupportActionBar(toolbar_main)
     }
 
     override fun navigateTo(@NavigationRes graphRes: Int) {
@@ -28,4 +61,6 @@ class MainActivity : DaggerAppCompatActivity(), Navigator.Listener {
             .setPrimaryNavigationFragment(graphFragment)
             .commit()
     }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
 }

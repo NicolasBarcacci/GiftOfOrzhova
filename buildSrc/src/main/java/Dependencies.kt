@@ -3,6 +3,7 @@ private object DependenciesVersions {
 
     const val androidXAppCompat = "1.0.2"
     const val constraintLayout = "1.1.3"
+    const val material = "1.0.0"
 
     const val dagger = "2.21"
     const val navigation = "1.0.0-rc02"
@@ -29,6 +30,8 @@ object Dependencies {
     // Artifact : https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${DependenciesVersions.constraintLayout}"
 
+    // Artifact : https://mvnrepository.com/artifact/com.google.android.material/material
+    const val material = "com.google.android.material:material:${DependenciesVersions.material}"
 
     // https://github.com/google/dagger
     const val dagger = "com.google.dagger:dagger:${DependenciesVersions.dagger}"

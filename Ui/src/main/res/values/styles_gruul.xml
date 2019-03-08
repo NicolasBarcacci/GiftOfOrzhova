@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppThemeGruul" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_gruul</item>
+        <item name="colorPrimaryDark">@color/primaryDark_gruul</item>
+        <item name="colorAccent">@color/accent_gruul</item>
+    </style>
+</resources>
