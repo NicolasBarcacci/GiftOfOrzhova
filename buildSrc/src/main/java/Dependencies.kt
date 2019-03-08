@@ -9,6 +9,7 @@ private object DependenciesVersions {
     const val navigation = "1.0.0-rc02"
 
     const val timber = "4.7.1"
+    const val glide = "4.9.0"
 
     const val junit = "4.12"
 }
@@ -47,6 +48,9 @@ object Dependencies {
 
     // https://github.com/JakeWharton/timber
     const val timber = "com.jakewharton.timber:timber:${DependenciesVersions.timber}"
+
+    const val glide = "com.github.bumptech.glide:glide:${DependenciesVersions.glide}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${DependenciesVersions.glide}"
 
 
     // https://github.com/junit-team/junit4
