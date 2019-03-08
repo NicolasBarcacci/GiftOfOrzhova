@@ -14,6 +14,7 @@ import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import fr.giftoforzhova.common.extentions.load
 import fr.giftoforzhova.common.navigation.Navigator
 import fr.meteordesign.giftoforzhova.R
 import fr.meteordesign.ui.UiAppTheme
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity(),
         drawer_main_drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        (nav_main_navigationView.getHeaderView(0) as ImageView).setImageResource(appTheme.guildBanner)
+        (nav_main_navigationView.getHeaderView(0) as ImageView).load(appTheme.guildBanner)
 
         nav_main_navigationView.setNavigationItemSelectedListener(this)
     }
