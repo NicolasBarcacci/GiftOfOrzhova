@@ -23,6 +23,7 @@ dependencies {
     implementation Dependencies.androidXCoreKTX
 
     implementation Dependencies.timber
+    implementation Dependencies.glide
 
     testImplementation Dependencies.junit
 }
