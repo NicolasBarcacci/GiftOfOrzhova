@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppThemeAzorius" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppThemeAzorius" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary_azorius</item>
         <item name="colorPrimaryDark">@color/primaryDark_azorius</item>
         <item name="colorAccent">@color/accent_azorius</item>
