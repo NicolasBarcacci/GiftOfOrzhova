@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun initToolbar() {
-        val isDark = resources.getBoolean(appTheme.darkOnPrimaryResId)
+        val isDarkTheme = resources.getBoolean(appTheme.darkThemeOnPrimaryResId)
         toolbar_main_stub.apply {
-            layoutResource = if (isDark) R.layout.appbarlayout_main_dark else R.layout.appbarlayout_main_light
+            layoutResource = if (isDarkTheme) R.layout.appbarlayout_main_dark else R.layout.appbarlayout_main_light
             inflate()
         }
         setSupportActionBar(toolbar_main)
