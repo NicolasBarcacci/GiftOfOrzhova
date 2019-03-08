@@ -2,6 +2,7 @@ package fr.meteordesign.giftoforzhova.features.main
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.annotation.NavigationRes
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -71,6 +72,8 @@ class MainActivity : AppCompatActivity(),
         )
         drawer_main_drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        (nav_main_navigationView.getHeaderView(0) as ImageView).setImageResource(appTheme.guildBanner)
 
         nav_main_navigationView.setNavigationItemSelectedListener(this)
     }
