@@ -10,6 +10,7 @@ private object DependenciesVersions {
     const val rxJava = "2.2.7"
     const val rxAndroid = "2.1.1"
     const val retrofit = "2.5.0"
+    const val room = "2.0.0"
 
     const val timber = "4.7.1"
     const val glide = "4.9.0"
@@ -65,6 +66,15 @@ object Dependencies {
     // Artifact : https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
     const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${DependenciesVersions.retrofit}"
 
+    // Guide : https://developer.android.com/training/data-storage/room/index.html
+    // Artifact : https://mvnrepository.com/artifact/androidx.room/room-runtime
+    const val room = "androidx.room:room-runtime:${DependenciesVersions.room}"
+
+    // Artifact : https://mvnrepository.com/artifact/androidx.room/room-rxjava2
+    const val roomRxJava2 = "androidx.room:room-rxjava2:${DependenciesVersions.room}"
+
+    // Artifact : https://mvnrepository.com/artifact/androidx.room/room-compiler
+    const val roomCompiler = "androidx.room:room-compiler:${DependenciesVersions.room}"
 
     // https://github.com/JakeWharton/timber
     const val timber = "com.jakewharton.timber:timber:${DependenciesVersions.timber}"
