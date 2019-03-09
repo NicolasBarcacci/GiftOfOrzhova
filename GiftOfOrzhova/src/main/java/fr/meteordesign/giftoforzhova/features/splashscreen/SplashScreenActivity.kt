@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
+import fr.meteordesign.giftoforzhova.features.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
 
@@ -18,12 +19,13 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_splashscreen)
 
         viewModel.state.observe(this, Observer { onStateChange(it) })
+        viewModel.event.observe(this, Observer { startMainActivity() })
         viewModel.cacheCards()
     }
 
     private fun onStateChange(state: State): Unit =
         when (state) {
-            State.Idle -> showIdleState()
+            State.Init -> showIdleState()
             is State.Downloading -> showDownloadingState(state)
         }
 
@@ -37,8 +39,12 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         progressBar.progress = state.progress
     }
 
+    private fun startMainActivity() {
+        startActivity(MainActivity.newIntent(this))
+    }
+
     sealed class State {
-        object Idle : State()
+        object Init : State()
         class Downloading(val progress: Int, val count: Int) : State()
     }
 }

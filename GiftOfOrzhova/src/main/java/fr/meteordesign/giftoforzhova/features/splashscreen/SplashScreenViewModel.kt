@@ -3,6 +3,7 @@ package fr.meteordesign.giftoforzhova.features.splashscreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import fr.giftoforzhova.common.SingleLiveEvent
 import fr.meteordesign.giftoforzhova.features.splashscreen.usecase.CardCachingUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -16,20 +17,23 @@ class SplashScreenViewModel @Inject constructor(
     private val _state = MutableLiveData<SplashScreenActivity.State>()
     val state: LiveData<SplashScreenActivity.State> = _state
 
+    private val _event = SingleLiveEvent<Unit>()
+    val event: LiveData<Unit> = _event
+
     private var count = -1
     private var progress = -1
 
     private var disposable: Disposable? = null
 
     init {
-        _state.value = SplashScreenActivity.State.Idle
+        _state.value = SplashScreenActivity.State.Init
     }
 
     fun cacheCards() {
         disposable?.dispose()
         disposable = cardCachingUseCase.cacheCards(this)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { _state.value = SplashScreenActivity.State.Idle }
+            .subscribe { _event.call() }
     }
 
     override fun onSetToCacheCount(count: Int) {
