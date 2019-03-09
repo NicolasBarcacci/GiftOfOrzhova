@@ -1,11 +1,11 @@
 package fr.meteordesign.giftoforzhova.features.splashscreen
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
 import javax.inject.Inject
 
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var viewModel: SplashScreenViewModel
@@ -13,6 +13,5 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
-        viewModel.test()
     }
 }
