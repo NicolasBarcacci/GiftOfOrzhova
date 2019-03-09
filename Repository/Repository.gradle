@@ -27,6 +27,11 @@ dependencies {
     implementation Dependencies.dagger
     implementation Dependencies.daggerAndroid
     implementation Dependencies.daggerAndroidSupport
+    implementation Dependencies.rxJava
+    implementation Dependencies.rxAndroid
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitAdapterRxJava2
+    implementation Dependencies.retrofitConverterGson
 
     testImplementation Dependencies.junit
 
