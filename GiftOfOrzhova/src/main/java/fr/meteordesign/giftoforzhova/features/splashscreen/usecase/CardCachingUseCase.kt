@@ -11,14 +11,17 @@ import javax.inject.Inject
 class CardCachingUseCase @Inject constructor(
     private val remoteCardsRepository: RemoteCardsRepository
 ) {
-    fun cacheCards(): Completable = getSetsToCache()
+    fun cacheCards(listener: Listener): Completable = getSetsToCache(listener)
         .flatMapSingle { getSetCards(it) }
-        .flatMapCompletable { cacheCards(it) }
+        .flatMapCompletable { cacheCards(it, listener) }
 
-    private fun getSetsToCache(): Flowable<MtgJsonSet> =
+    private fun getSetsToCache(listener: Listener): Flowable<MtgJsonSet> =
         remoteCardsRepository.getSets()
             .map { it.filterNot { set -> isSetSaved(set) } }
-            .flattenAsFlowable { it }
+            .flattenAsFlowable {
+                listener.onSetToCacheCount(it.size)
+                it
+            }
 
     private fun isSetSaved(set: MtgJsonSet): Boolean = false
 
@@ -26,8 +29,13 @@ class CardCachingUseCase @Inject constructor(
         remoteCardsRepository.getSetCards(set.code!!)
             .map { it.cards }
 
-    private fun cacheCards(cards: List<MtgJsonCard>): Completable {
-        // TODO save cards
+    private fun cacheCards(cards: List<MtgJsonCard>, listener: Listener): Completable {
+        listener.onSetCached()
         return Completable.complete()
+    }
+
+    interface Listener {
+        fun onSetToCacheCount(count: Int)
+        fun onSetCached()
     }
 }
