@@ -4,8 +4,11 @@ import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
 import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MtgJsonCardsRepositoryImpl(
+internal const val MTJ_JSON_BASE_URL = "https://mtgjson.com/"
+
+class MtgJsonCardsRepositoryImpl @Inject constructor(
     private val api: MtgJsonCardsApi
 ) : RemoteCardsRepository {
 
