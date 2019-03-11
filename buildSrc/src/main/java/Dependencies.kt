@@ -7,6 +7,8 @@ private object DependenciesVersions {
 
     const val dagger = "2.21"
     const val navigation = "1.0.0-rc02"
+    const val rxJava = "2.2.7"
+    const val rxAndroid = "2.1.1"
 
     const val timber = "4.7.1"
     const val glide = "4.9.0"
@@ -36,14 +38,21 @@ object Dependencies {
 
     // https://github.com/google/dagger
     const val dagger = "com.google.dagger:dagger:${DependenciesVersions.dagger}"
-    const val daggerCompiler = "com.google.dagger:dagger-compiler:${DependenciesVersions.dagger}"
     const val daggerAndroid = "com.google.dagger:dagger-android:${DependenciesVersions.dagger}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${DependenciesVersions.dagger}"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${DependenciesVersions.dagger}"
+    const val daggerCompiler = "com.google.dagger:dagger-compiler:${DependenciesVersions.dagger}"
 
     // Guide : https://developer.android.com/topic/libraries/architecture/navigation/navigation-implementing
     // Artifact : https://mvnrepository.com/artifact/android.arch.navigation/navigation-fragment
     const val navigation = "android.arch.navigation:navigation-fragment:${DependenciesVersions.navigation}"
+
+    // Artifact : https://search.maven.org/search?q=g:io.reactivex.rxjava2%20a:rxjava
+    const val rxJava = "io.reactivex.rxjava2:rxjava:${DependenciesVersions.rxJava}"
+
+    // Guide : https://github.com/ReactiveX/RxAndroid
+    // Artifact : https://search.maven.org/search?q=g:io.reactivex.rxjava2%20a:rxandroid
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${DependenciesVersions.rxAndroid}"
 
 
     // https://github.com/JakeWharton/timber
