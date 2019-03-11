@@ -9,6 +9,7 @@ private object DependenciesVersions {
     const val navigation = "1.0.0-rc02"
     const val rxJava = "2.2.7"
     const val rxAndroid = "2.1.1"
+    const val retrofit = "2.5.0"
 
     const val timber = "4.7.1"
     const val glide = "4.9.0"
@@ -53,6 +54,16 @@ object Dependencies {
     // Guide : https://github.com/ReactiveX/RxAndroid
     // Artifact : https://search.maven.org/search?q=g:io.reactivex.rxjava2%20a:rxandroid
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${DependenciesVersions.rxAndroid}"
+
+    // Guide : https://square.github.io/retrofit/
+    // Artifact : https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
+    const val retrofit = "com.squareup.retrofit2:retrofit:${DependenciesVersions.retrofit}"
+
+    // Artifact : https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2
+    const val retrofitAdapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:${DependenciesVersions.retrofit}"
+
+    // Artifact : https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
+    const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${DependenciesVersions.retrofit}"
 
 
     // https://github.com/JakeWharton/timber
