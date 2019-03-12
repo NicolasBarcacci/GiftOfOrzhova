@@ -1,5 +1,6 @@
 package fr.meteordesign.giftoforzhova.features.splashscreen.usecase
 
+import fr.meteordesign.repository.repositories.cards.LocalCardRepository
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
 import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonCard
 import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
@@ -9,7 +10,8 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class CardCachingUseCase @Inject constructor(
-    private val remoteCardsRepository: RemoteCardsRepository
+    private val remoteCardsRepository: RemoteCardsRepository,
+    private val localCardRepository: LocalCardRepository
 ) {
     fun cacheCards(listener: Listener): Completable = getSetsToCache(listener)
         .flatMapSingle { getSetCards(it) }

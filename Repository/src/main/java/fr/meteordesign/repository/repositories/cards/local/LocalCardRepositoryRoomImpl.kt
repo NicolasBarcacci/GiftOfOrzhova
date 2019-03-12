@@ -17,7 +17,7 @@ private const val CARD_REPOSITORY_VERSION = 1
 )
 @TypeConverters(ListStringConverter::class)
 abstract class LocalCardRepositoryRoomImpl : RoomDatabase() {
-    abstract fun cardDao(): LocalCardRepository
+    abstract fun cardsDao(): LocalCardRepository
 }
 
 internal class ListStringConverter {

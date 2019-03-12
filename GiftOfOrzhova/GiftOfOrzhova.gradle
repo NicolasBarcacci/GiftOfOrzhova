@@ -39,6 +39,9 @@ dependencies {
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitAdapterRxJava2
     implementation Dependencies.retrofitConverterGson
+    implementation Dependencies.room
+    implementation Dependencies.roomRxJava2
+    kapt Dependencies.roomCompiler
 
     testImplementation Dependencies.junit
 
