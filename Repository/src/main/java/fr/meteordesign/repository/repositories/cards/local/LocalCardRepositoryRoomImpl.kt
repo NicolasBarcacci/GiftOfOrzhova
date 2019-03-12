@@ -16,7 +16,7 @@ private const val CARD_REPOSITORY_VERSION = 1
     entities = [RoomSet::class, RoomCard::class]
 )
 @TypeConverters(ListStringConverter::class)
-abstract class RoomCardRepositoryImpl : RoomDatabase() {
+abstract class LocalCardRepositoryRoomImpl : RoomDatabase() {
     abstract fun cardDao(): LocalCardRepository
 }
 

@@ -6,7 +6,7 @@ import dagger.Provides
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
 import fr.meteordesign.repository.repositories.cards.remote.MTJ_JSON_BASE_URL
 import fr.meteordesign.repository.repositories.cards.remote.MtgJsonCardsApi
-import fr.meteordesign.repository.repositories.cards.remote.MtgJsonCardsRepositoryImpl
+import fr.meteordesign.repository.repositories.cards.remote.RemoteCardsRepositoryMtgJsonImpl
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 abstract class RemoteCardsRepositoryModule {
 
     @Binds
-    abstract fun provideRemoteRepository(mtgJsonCardsRepositoryImpl: MtgJsonCardsRepositoryImpl): RemoteCardsRepository
+    abstract fun provideRemoteRepository(
+        remoteCardsRepositoryMtgJsonImpl: RemoteCardsRepositoryMtgJsonImpl
+    ): RemoteCardsRepository
 
     @Module
     companion object {

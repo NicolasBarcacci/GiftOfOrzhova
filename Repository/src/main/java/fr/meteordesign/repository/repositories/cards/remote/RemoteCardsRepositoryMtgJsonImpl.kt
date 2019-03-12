@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 internal const val MTJ_JSON_BASE_URL = "https://mtgjson.com/"
 
-class MtgJsonCardsRepositoryImpl @Inject constructor(
+class RemoteCardsRepositoryMtgJsonImpl @Inject constructor(
     private val api: MtgJsonCardsApi
 ) : RemoteCardsRepository {
 
