@@ -2,7 +2,6 @@ package fr.meteordesign.giftoforzhova.features.splashscreen.usecase
 
 import fr.meteordesign.repository.repositories.cards.LocalCardRepository
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
-import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonCard
 import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
 import io.reactivex.Completable
 import io.reactivex.Flowable
@@ -14,8 +13,8 @@ class CardCachingUseCase @Inject constructor(
     private val localCardRepository: LocalCardRepository
 ) {
     fun cacheCards(listener: Listener): Completable = getSetsToCache(listener)
-        .flatMapSingle { getSetCards(it) }
-        .flatMapCompletable { cacheCards(it, listener) }
+        .flatMapSingle { getSet(it) }
+        .flatMapCompletable { cacheSet(it, listener) }
 
     private fun getSetsToCache(listener: Listener): Flowable<MtgJsonSet> =
         remoteCardsRepository.getSets()
@@ -27,11 +26,10 @@ class CardCachingUseCase @Inject constructor(
 
     private fun isSetSaved(set: MtgJsonSet): Boolean = false
 
-    private fun getSetCards(set: MtgJsonSet): Single<List<MtgJsonCard>> =
+    private fun getSet(set: MtgJsonSet): Single<MtgJsonSet> =
         remoteCardsRepository.getSetCards(set.code!!)
-            .map { it.cards }
 
-    private fun cacheCards(cards: List<MtgJsonCard>, listener: Listener): Completable {
+    private fun cacheSet(set: MtgJsonSet, listener: Listener): Completable {
         listener.onSetCached()
         return Completable.complete()
     }
