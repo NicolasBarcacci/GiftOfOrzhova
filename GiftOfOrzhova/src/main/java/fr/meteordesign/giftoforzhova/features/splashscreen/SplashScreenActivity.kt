@@ -19,15 +19,14 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_splashscreen)
 
         viewModel.state.observe(this, Observer { onStateChange(it) })
-        viewModel.event.observe(this, Observer { startMainActivity() })
+        viewModel.event.observe(this, Observer { onEvent(it) })
         viewModel.cacheCards()
     }
 
-    private fun onStateChange(state: State): Unit =
-        when (state) {
-            State.Init -> showIdleState()
-            is State.Downloading -> showDownloadingState(state)
-        }
+    private fun onStateChange(state: State): Unit = when (state) {
+        State.Init -> showIdleState()
+        is State.Downloading -> showDownloadingState(state)
+    }
 
     private fun showIdleState() {
         progressBar.visibility = View.GONE
@@ -39,8 +38,8 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         progressBar.progress = state.progress
     }
 
-    private fun startMainActivity() {
-        startActivity(MainActivity.newIntent(this))
+    private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
+        SplashScreenViewModel.Event.START_MAIN_ACTIVITY -> startActivity(MainActivity.newIntent(this))
     }
 
     sealed class State {
