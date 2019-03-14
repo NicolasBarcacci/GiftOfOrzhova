@@ -28,9 +28,21 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
-        container_SplashScreen_ConstraintLayout.setBackgroundColor(
-            ContextCompat.getColor(this, viewModel.appTheme.primaryColor)
-        )
+        viewModel.appTheme.let { appTheme ->
+            container_splashScreen_constraintLayout.setBackgroundColor(
+                ContextCompat.getColor(this, appTheme.primaryColor)
+            )
+            appName_splashScreen_TextView.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    if (resources.getBoolean(appTheme.darkThemeOnPrimary)) {
+                        R.color.white
+                    } else {
+                        R.color.black
+                    }
+                )
+            )
+        }
     }
 
     private fun onStateChange(state: State): Unit = when (state) {
@@ -39,14 +51,14 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     }
 
     private fun showIdleState(state: State.Init) {
-        download_SplashScreen_ProgressBar.visibility = View.GONE
+        download_splashScreen_progressBar.visibility = View.GONE
     }
 
     private fun showDownloadingState(state: State.Downloading) {
-        download_SplashScreen_ProgressBar.visibility = View.VISIBLE
-        download_SplashScreen_ProgressBar.isIndeterminate = state.isIndeterminate
-        download_SplashScreen_ProgressBar.max = state.count
-        download_SplashScreen_ProgressBar.progress = state.progress
+        download_splashScreen_progressBar.visibility = View.VISIBLE
+        download_splashScreen_progressBar.isIndeterminate = state.isIndeterminate
+        download_splashScreen_progressBar.max = state.count
+        download_splashScreen_progressBar.progress = state.progress
     }
 
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {

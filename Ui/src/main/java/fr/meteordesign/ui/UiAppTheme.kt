@@ -8,8 +8,8 @@ import androidx.annotation.StyleRes
 enum class UiAppTheme(
     @StyleRes val themeResId: Int,
     @ColorRes val primaryColor: Int,
-    @BoolRes val darkThemeOnPrimaryResId: Int,
-    @BoolRes val darkThemeOnAccentResId: Int,
+    @BoolRes val darkThemeOnPrimary: Int,
+    @BoolRes val darkThemeOnAccent: Int,
     @DrawableRes val guildBanner: Int
 ) {
     AZORIUS(
