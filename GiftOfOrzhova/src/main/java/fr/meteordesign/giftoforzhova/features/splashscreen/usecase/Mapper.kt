@@ -1,17 +1,17 @@
 package fr.meteordesign.giftoforzhova.features.splashscreen.usecase
 
-import fr.meteordesign.repository.repositories.cards.local.entity.RoomCard
-import fr.meteordesign.repository.repositories.cards.local.entity.RoomSet
+import fr.meteordesign.repository.repositories.cards.local.entity.LocalCard
+import fr.meteordesign.repository.repositories.cards.local.entity.LocalSet
 import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonCard
-import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
+import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
 
-fun toRoomSet(mtgJsonSet: MtgJsonSet): RoomSet = RoomSet(
-    code = mtgJsonSet.code!!,
-    name = mtgJsonSet.name
+fun toLocalSet(remoteSet: RemoteSet): LocalSet = LocalSet(
+    code = remoteSet.code!!,
+    name = remoteSet.name
 )
 
-fun toRoomCard(setCode: String, mtgJsonCard: MtgJsonCard): RoomCard = RoomCard(
-    multiverseId = mtgJsonCard.multiverseId!!,
+fun toLocalCard(setCode: String, RemoteCard: MtgJsonCard): LocalCard = LocalCard(
+    multiverseId = RemoteCard.multiverseId!!,
     setCode = setCode,
-    name = mtgJsonCard.name
+    name = RemoteCard.name
 )

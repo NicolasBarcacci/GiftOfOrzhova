@@ -1,7 +1,7 @@
 package fr.meteordesign.repository.repositories.cards.remote
 
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
-import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
+import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -12,11 +12,11 @@ class RemoteCardsRepositoryMtgJsonImpl @Inject constructor(
     private val api: MtgJsonCardsApi
 ) : RemoteCardsRepository {
 
-    override fun getSets(): Single<List<MtgJsonSet>> =
+    override fun getSets(): Single<List<RemoteSet>> =
         api.getSets()
             .subscribeOn(Schedulers.io())
 
-    override fun getSetCards(setCode: String): Single<MtgJsonSet> =
+    override fun getSetCards(setCode: String): Single<RemoteSet> =
         api.getSetCards(setCode)
             .subscribeOn(Schedulers.io())
 }

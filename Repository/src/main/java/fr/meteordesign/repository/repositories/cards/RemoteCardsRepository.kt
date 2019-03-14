@@ -1,9 +1,9 @@
 package fr.meteordesign.repository.repositories.cards
 
-import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
+import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
 import io.reactivex.Single
 
 interface RemoteCardsRepository {
-    fun getSets(): Single<List<MtgJsonSet>>
-    fun getSetCards(setCode: String): Single<MtgJsonSet>
+    fun getSets(): Single<List<RemoteSet>>
+    fun getSetCards(setCode: String): Single<RemoteSet>
 }

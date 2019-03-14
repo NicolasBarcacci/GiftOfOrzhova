@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class RoomSet(
+data class LocalSet(
     @PrimaryKey @ColumnInfo(name = "code") val code: String,
     @ColumnInfo(name = "name") val name: String?
 )

@@ -1,6 +1,6 @@
 package fr.meteordesign.repository.repositories.cards.remote
 
-import fr.meteordesign.repository.repositories.cards.remote.entity.MtgJsonSet
+import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,8 +10,8 @@ private const val SET_CODE = "SET_CODE"
 interface MtgJsonCardsApi {
 
     @GET("json/SetList.json")
-    fun getSets(): Single<List<MtgJsonSet>>
+    fun getSets(): Single<List<RemoteSet>>
 
     @GET("json/{$SET_CODE}.json")
-    fun getSetCards(@Path(SET_CODE) setCode: String): Single<MtgJsonSet>
+    fun getSetCards(@Path(SET_CODE) setCode: String): Single<RemoteSet>
 }
