@@ -5,53 +5,34 @@ import fr.meteordesign.repository.repositories.cards.LocalCardRepository
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
 import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
 import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Single
 import javax.inject.Inject
 
 class CardCachingUseCase @Inject constructor(
     private val remoteCardsRepository: RemoteCardsRepository,
     private val localCardRepository: LocalCardRepository
 ) {
-    fun cacheCards(listener: Listener): Completable = getSetsToCache(listener)
-        .flatMapSingle { getSet(it) }
-        .flatMapCompletable { cacheSet(it, listener) }
-
-    private fun getSetsToCache(listener: Listener): Flowable<RemoteSet> =
-        remoteCardsRepository.getSets()
-            .map { it.filterNot { set -> isSetSaved(set) } }
-            .flattenAsFlowable {
-                listener.onSetToCacheCount(it.size)
-                it
-            }
-
-    private fun isSetSaved(set: RemoteSet): Boolean = false
-
-    private fun getSet(set: RemoteSet): Single<RemoteSet> =
-        remoteCardsRepository.getSetCards(set.code!!)
-
-    private fun cacheSet(remoteSet: RemoteSet, listener: Listener): Completable {
-        if (remoteSet.code == null) {
-            Logger.w("set has no code $remoteSet")
-            listener.onSetCached()
-            return Completable.complete()
+    fun cacheCards(listener: Listener): Completable = remoteCardsRepository.getSets()
+        .map { removedSavedSets(it) }
+        .flattenAsFlowable { sets -> sets.also { listener.onSetToCacheCount(sets.size) } }
+        .flatMapSingle { set -> remoteCardsRepository.getSetCards(set.code!!) }
+        .flatMapCompletable {
+            cacheSetAndCards(it, listener)
         }
 
-        val localSet = toLocalSet(remoteSet)
-        val localCards = remoteSet.cards?.filterNot { it.multiverseId == null }
-            ?.map { toLocalCard(localSet.code, it) }
-            ?.ifEmpty {
-                Logger.d("empty set $localSet")
-                listener.onSetCached()
-                return Completable.complete()
-            }
+    private fun removedSavedSets(sets: List<RemoteSet>): List<RemoteSet> =
+        sets.filterNot { set -> (set.code == null).also { Logger.w("Downloaded a set with no code $set") } }
+            .filterNot { remoteSet -> localCardRepository.getSet(remoteSet.code!!)?.isUpToDate ?: false }
 
-        Logger.d("saving set $localSet")
-        localCardRepository.saveSet(localSet)
-        localCards?.forEach {
-            Logger.d("saving card $it")
-            localCardRepository.saveCard(it)
-        }
+    private fun cacheSetAndCards(remoteSet: RemoteSet, listener: Listener): Completable {
+        val setCode = remoteSet.code!!
+
+        localCardRepository.saveSet(toLocalSet(remoteSet, false))
+        remoteSet.cards?.filterNot { it.multiverseId == null }
+            ?.map { toLocalCard(setCode, it) }
+            ?.forEach {
+                localCardRepository.saveCard(it)
+            }
+        localCardRepository.saveSet(toLocalSet(remoteSet, true))
 
         listener.onSetCached()
         return Completable.complete()
