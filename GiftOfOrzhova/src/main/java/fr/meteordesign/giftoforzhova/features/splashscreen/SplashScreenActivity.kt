@@ -34,6 +34,7 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
 
     private fun showDownloadingState(state: State.Downloading) {
         progressBar.visibility = View.VISIBLE
+        progressBar.isIndeterminate = state.isIndeterminate
         progressBar.max = state.count
         progressBar.progress = state.progress
     }
@@ -44,6 +45,6 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
 
     sealed class State {
         object Init : State()
-        class Downloading(val progress: Int, val count: Int) : State()
+        class Downloading(val isIndeterminate: Boolean, val progress: Int, val count: Int) : State()
     }
 }
