@@ -31,6 +31,7 @@ class SplashScreenViewModel @Inject constructor(
 
     fun cacheCards() {
         disposable?.dispose()
+        _state.value = SplashScreenActivity.State.Downloading(true, 0, 0)
         disposable = cardCachingUseCase.cacheCards(this)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _event.value = Event.START_MAIN_ACTIVITY }
@@ -48,7 +49,7 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     private fun updateProgress() {
-        _state.postValue(SplashScreenActivity.State.Downloading(progress, count))
+        _state.postValue(SplashScreenActivity.State.Downloading(false, progress, count))
     }
 
     override fun onCleared() {
