@@ -5,14 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import fr.giftoforzhova.common.SingleLiveEvent
 import fr.meteordesign.giftoforzhova.features.splashscreen.usecase.CardCachingUseCase
+import fr.meteordesign.giftoforzhova.usecase.AppThemeUseCase
+import fr.meteordesign.ui.UiAppTheme
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 class SplashScreenViewModel @Inject constructor(
+    appThemeUseCase: AppThemeUseCase,
     private val cardCachingUseCase: CardCachingUseCase
 ) : ViewModel(),
     CardCachingUseCase.Listener {
+
+    val appTheme: UiAppTheme = appThemeUseCase.getAppTheme()
 
     private val _state = MutableLiveData<SplashScreenActivity.State>()
     val state: LiveData<SplashScreenActivity.State> = _state
