@@ -38,11 +38,11 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     fun cacheCards() {
-        disposable?.dispose()
-        _cacheState.value = SplashScreenActivity.CacheState.Downloading(true, 0, 0)
-        disposable = cardCachingUseCase.cacheCards(this)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { _event.value = Event.Ready }
+//        disposable?.dispose()
+//        _cacheState.value = SplashScreenActivity.CacheState.Downloading(true, 0, 0)
+//        disposable = cardCachingUseCase.cacheCards(this)
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe { _event.value = Event.Ready }
     }
 
     override fun onSetToCacheCount(count: Int) {
