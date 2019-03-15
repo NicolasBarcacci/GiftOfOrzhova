@@ -15,6 +15,9 @@ class CardCachingUseCase @Inject constructor(
     private val remoteCardsRepository: RemoteCardsRepository,
     private val localCardRepository: LocalCardRepository
 ) {
+    fun isAppInitialized(): Single<Boolean> = remoteCardsRepository.getSavedVersion()
+        .flatMap { Single.just(it.value != null) }
+
     fun isThereANewVersion(): Single<Boolean> = Single.zip(
         remoteCardsRepository.getSavedVersion(),
         remoteCardsRepository.getCurrentVersion(),

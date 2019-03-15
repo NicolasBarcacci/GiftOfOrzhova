@@ -21,5 +21,6 @@ dependencies {
     implementation Dependencies.kotlinStdlib
 
     implementation Dependencies.androidXAppCompat
+    implementation Dependencies.material
     implementation Dependencies.constraintLayout
 }

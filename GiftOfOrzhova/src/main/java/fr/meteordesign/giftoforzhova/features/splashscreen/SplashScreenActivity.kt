@@ -2,12 +2,13 @@ package fr.meteordesign.giftoforzhova.features.splashscreen
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
-import fr.meteordesign.giftoforzhova.managers.AppThemeManager
 import fr.meteordesign.giftoforzhova.features.main.MainActivity
+import fr.meteordesign.giftoforzhova.managers.AppThemeManager
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
 
@@ -22,10 +23,13 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
+        Toast.makeText(this, "aaaaaa", Toast.LENGTH_SHORT).show()
+
         viewModel.state.observe(this, Observer { onStateChange(it) })
         viewModel.cacheState.observe(this, Observer { onCacheStateChange(it) })
         viewModel.event.observe(this, Observer { onEvent(it) })
-        viewModel.cacheCards()
+
+        viewModel.start()
     }
 
     private fun onStateChange(state: State): Unit = when (state) {
@@ -58,7 +62,21 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     }
 
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
-        SplashScreenViewModel.Event.Ready -> startActivity(MainActivity.newIntent(this))
+        SplashScreenViewModel.Event.OnInit -> {
+            // TODO show init popup
+            viewModel.abortDownload()
+        }
+        SplashScreenViewModel.Event.NewUpdates -> {
+            // TODO show update popup
+        }
+        SplashScreenViewModel.Event.Terminate -> {
+            // TODO show error message
+            finish()
+        }
+        SplashScreenViewModel.Event.Continue -> {
+            startActivity(MainActivity.newIntent(this))
+            finish()
+        }
     }
 
     sealed class State {

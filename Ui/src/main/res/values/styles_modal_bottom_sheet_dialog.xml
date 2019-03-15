@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ModalBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/ModalBottomSheetDialogBackground</item>
+    </style>
+
+    <style name="ModalBottomSheetDialogBackground">
+        <item name="android:background">@drawable/background_modal_bottom_sheet_dialog</item>
+    </style>
+</resources>
