@@ -9,7 +9,6 @@ import fr.meteordesign.repository.repositories.cards.local.entity.CARDS_TABLE_NA
 import fr.meteordesign.repository.repositories.cards.local.entity.LocalCard
 import fr.meteordesign.repository.repositories.cards.local.entity.LocalSet
 import fr.meteordesign.repository.repositories.cards.local.entity.SETS_COLUMN_CODE
-import fr.meteordesign.repository.repositories.cards.local.entity.SETS_IS_UP_TO_DATE
 import fr.meteordesign.repository.repositories.cards.local.entity.SETS_TABLE_NAME
 
 @Dao
