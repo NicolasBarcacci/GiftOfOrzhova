@@ -1,4 +1,4 @@
-package fr.meteordesign.giftoforzhova.usecase
+package fr.meteordesign.giftoforzhova.features.apptheme.usecase
 
 import fr.meteordesign.repository.repositories.appsettings.AppSettingsRepository
 import fr.meteordesign.ui.UiAppTheme

@@ -1,7 +1,7 @@
 package fr.meteordesign.giftoforzhova.features.main
 
 import androidx.lifecycle.ViewModel
-import fr.meteordesign.giftoforzhova.usecase.AppThemeUseCase
+import fr.meteordesign.giftoforzhova.features.apptheme.usecase.AppThemeUseCase
 import fr.meteordesign.ui.UiAppTheme
 import javax.inject.Inject
 
