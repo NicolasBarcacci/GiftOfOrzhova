@@ -16,8 +16,8 @@ class SplashScreenViewModel @Inject constructor(
 ) : ViewModel(),
     CardCachingUseCase.Listener {
 
-    private val _state = MutableLiveData<SplashScreenActivity.State>()
-    val state: LiveData<SplashScreenActivity.State> = _state
+    private val _cacheState = MutableLiveData<SplashScreenActivity.CacheState>()
+    val cacheState: LiveData<SplashScreenActivity.CacheState> = _cacheState
 
     private val _event = SingleLiveEvent<Event>()
     val event: LiveData<Event> = _event
@@ -28,12 +28,12 @@ class SplashScreenViewModel @Inject constructor(
     private var disposable: Disposable? = null
 
     init {
-        _state.value = SplashScreenActivity.State.Init
+        _cacheState.value = SplashScreenActivity.CacheState.Init
     }
 
     fun cacheCards() {
         disposable?.dispose()
-        _state.value = SplashScreenActivity.State.Downloading(true, 0, 0)
+        _cacheState.value = SplashScreenActivity.CacheState.Downloading(true, 0, 0)
         disposable = cardCachingUseCase.cacheCards(this)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _event.value = Event.Ready }
@@ -51,7 +51,7 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     private fun updateProgress() {
-        _state.postValue(SplashScreenActivity.State.Downloading(false, progress, count))
+        _cacheState.postValue(SplashScreenActivity.CacheState.Downloading(false, progress, count))
     }
 
     override fun onCleared() {
