@@ -29,14 +29,14 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     }
 
     private fun showIdleState() {
-        progressBar.visibility = View.GONE
+        download_splashScreen_progressBar.visibility = View.GONE
     }
 
     private fun showDownloadingState(state: State.Downloading) {
-        progressBar.visibility = View.VISIBLE
-        progressBar.isIndeterminate = state.isIndeterminate
-        progressBar.max = state.count
-        progressBar.progress = state.progress
+        download_splashScreen_progressBar.visibility = View.VISIBLE
+        download_splashScreen_progressBar.isIndeterminate = state.isIndeterminate
+        download_splashScreen_progressBar.max = state.count
+        download_splashScreen_progressBar.progress = state.progress
     }
 
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
