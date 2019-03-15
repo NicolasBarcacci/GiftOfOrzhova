@@ -1,4 +1,4 @@
-package fr.meteordesign.giftoforzhova.features.apptheme
+package fr.meteordesign.giftoforzhova.managers
 
 import android.content.Context
 import androidx.annotation.ColorRes
@@ -7,7 +7,9 @@ import androidx.annotation.StyleRes
 import fr.meteordesign.giftoforzhova.R
 import fr.meteordesign.ui.UiAppTheme
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppThemeManager @Inject constructor(
     context: Context,
     uiAppTheme: UiAppTheme

@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
-import fr.meteordesign.giftoforzhova.features.apptheme.AppThemeManager
+import fr.meteordesign.giftoforzhova.managers.AppThemeManager
 import fr.meteordesign.giftoforzhova.features.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
