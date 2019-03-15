@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel
 import fr.giftoforzhova.common.SingleLiveEvent
 import fr.meteordesign.giftoforzhova.features.apptheme.AppThemeManager
 import fr.meteordesign.giftoforzhova.features.splashscreen.usecase.CardCachingUseCase
+import fr.meteordesign.giftoforzhova.managers.WifiManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 class SplashScreenViewModel @Inject constructor(
-    private val appThemeManager: AppThemeManager,
+    appThemeManager: AppThemeManager,
+    private val wifiManager: WifiManager,
     private val cardCachingUseCase: CardCachingUseCase
 ) : ViewModel(),
     CardCachingUseCase.Listener {
