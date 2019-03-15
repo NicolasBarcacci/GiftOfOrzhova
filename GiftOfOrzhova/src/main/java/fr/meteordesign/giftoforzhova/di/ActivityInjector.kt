@@ -21,6 +21,12 @@ abstract class ActivityInjector {
     )
     abstract fun injectMainActivity(): MainActivity
 
-    @ContributesAndroidInjector(modules = [RemoteCardsRepositoryModule::class])
+    @ContributesAndroidInjector(
+        modules = [
+            RemoteCardsRepositoryModule::class,
+            AppThemeModule::class,
+            AppSettingsRepositoryModule::class
+        ]
+    )
     abstract fun injectSplashScreenActivity(): SplashScreenActivity
 }
