@@ -16,6 +16,9 @@ class SplashScreenViewModel @Inject constructor(
 ) : ViewModel(),
     CardCachingUseCase.Listener {
 
+    private val _state = MutableLiveData<SplashScreenActivity.State>()
+    val state: LiveData<SplashScreenActivity.State> = _state
+
     private val _cacheState = MutableLiveData<SplashScreenActivity.CacheState>()
     val cacheState: LiveData<SplashScreenActivity.CacheState> = _cacheState
 
@@ -28,6 +31,9 @@ class SplashScreenViewModel @Inject constructor(
     private var disposable: Disposable? = null
 
     init {
+        _state.value = SplashScreenActivity.State.Init(
+            appThemeManager.primaryColor
+        )
         _cacheState.value = SplashScreenActivity.CacheState.Init
     }
 

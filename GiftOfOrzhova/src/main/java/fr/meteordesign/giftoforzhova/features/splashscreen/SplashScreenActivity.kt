@@ -2,6 +2,8 @@ package fr.meteordesign.giftoforzhova.features.splashscreen
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
@@ -18,9 +20,18 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
 
+        viewModel.state.observe(this, Observer { onStateChange(it) })
         viewModel.cacheState.observe(this, Observer { onCacheStateChange(it) })
         viewModel.event.observe(this, Observer { onEvent(it) })
         viewModel.cacheCards()
+    }
+
+    private fun onStateChange(state: State): Unit = when (state) {
+        is State.Init -> {
+            container_splashScreen_constraintLayout.setBackgroundColor(
+                ContextCompat.getColor(this, state.backgroundColor)
+            )
+        }
     }
 
     private fun onCacheStateChange(cacheState: CacheState): Unit = when (cacheState) {
@@ -41,6 +52,12 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
 
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
         SplashScreenViewModel.Event.Ready -> startActivity(MainActivity.newIntent(this))
+    }
+
+    sealed class State {
+        class Init(
+            @ColorRes val backgroundColor: Int
+        ) : State()
     }
 
     sealed class CacheState {
