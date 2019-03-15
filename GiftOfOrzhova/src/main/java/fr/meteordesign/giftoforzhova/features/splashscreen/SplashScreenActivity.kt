@@ -19,6 +19,8 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
         viewModel.state.observe(this, Observer { onStateChange(it) })
         viewModel.cacheState.observe(this, Observer { onCacheStateChange(it) })
