@@ -1,5 +1,7 @@
 package fr.meteordesign.giftoforzhova.features.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
@@ -99,4 +101,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
+
+    companion object {
+        fun newIntent(context: Context): Intent =
+                Intent(context, MainActivity::class.java)
+    }
 }
