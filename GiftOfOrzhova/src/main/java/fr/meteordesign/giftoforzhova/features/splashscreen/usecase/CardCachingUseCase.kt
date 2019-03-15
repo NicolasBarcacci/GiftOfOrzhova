@@ -20,8 +20,13 @@ class CardCachingUseCase @Inject constructor(
         }
 
     private fun removedSavedSets(sets: List<RemoteSet>): List<RemoteSet> =
-        sets.filterNot { set -> (set.code == null).also { Logger.w("Downloaded a set with no code $set") } }
-            .filterNot { remoteSet -> localCardRepository.getSet(remoteSet.code!!)?.isUpToDate ?: false }
+        sets.filterNot { set ->
+            val hasNullCode = (set.code == null)
+            if (hasNullCode) {
+                Logger.w("Downloaded a set with no code $set")
+            }
+            hasNullCode
+        }.filterNot { remoteSet -> localCardRepository.getSet(remoteSet.code!!)?.isUpToDate ?: false }
 
     private fun cacheSetAndCards(remoteSet: RemoteSet, listener: Listener): Completable {
         val setCode = remoteSet.code!!
