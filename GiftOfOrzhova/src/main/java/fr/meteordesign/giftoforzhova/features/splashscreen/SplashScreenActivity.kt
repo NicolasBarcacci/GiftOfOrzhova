@@ -2,11 +2,11 @@ package fr.meteordesign.giftoforzhova.features.splashscreen
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
+import fr.meteordesign.giftoforzhova.features.apptheme.AppThemeManager
 import fr.meteordesign.giftoforzhova.features.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
@@ -30,9 +30,14 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
 
     private fun onStateChange(state: State): Unit = when (state) {
         is State.Init -> {
-            container_splashScreen_constraintLayout.setBackgroundColor(
-                ContextCompat.getColor(this, state.backgroundColor)
-            )
+            state.appThemeManager.let { appTheme ->
+                container_splashScreen_constraintLayout.setBackgroundColor(
+                    ContextCompat.getColor(this, appTheme.primaryColor)
+                )
+                appName_splashScreen_TextView.setTextColor(
+                    ContextCompat.getColor(this, appTheme.colorOnPrimaryColor)
+                )
+            }
         }
     }
 
@@ -57,9 +62,7 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     }
 
     sealed class State {
-        class Init(
-            @ColorRes val backgroundColor: Int
-        ) : State()
+        class Init(val appThemeManager: AppThemeManager) : State()
     }
 
     sealed class CacheState {

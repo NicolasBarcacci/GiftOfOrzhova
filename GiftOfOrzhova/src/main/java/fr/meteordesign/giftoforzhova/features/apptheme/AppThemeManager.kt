@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
+import fr.meteordesign.giftoforzhova.R
 import fr.meteordesign.ui.UiAppTheme
 import javax.inject.Inject
 
@@ -17,6 +18,8 @@ class AppThemeManager @Inject constructor(
 
     @ColorRes
     val primaryColor = uiAppTheme.primaryColor
+    @ColorRes
+    val colorOnPrimaryColor = if (isDarkTheme) R.color.white else R.color.black
 
     @DrawableRes
     val guildBannerResId = uiAppTheme.guildBanner

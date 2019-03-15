@@ -31,9 +31,7 @@ class SplashScreenViewModel @Inject constructor(
     private var disposable: Disposable? = null
 
     init {
-        _state.value = SplashScreenActivity.State.Init(
-            appThemeManager.primaryColor
-        )
+        _state.value = SplashScreenActivity.State.Init(appThemeManager)
         _cacheState.value = SplashScreenActivity.CacheState.Init
     }
 
