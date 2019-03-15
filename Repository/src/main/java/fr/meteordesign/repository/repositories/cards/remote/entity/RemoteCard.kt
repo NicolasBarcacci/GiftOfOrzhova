@@ -13,7 +13,7 @@ data class RemoteCard(
     @SerializedName("duelDeck") val duelDeck: String?,
     @SerializedName("faceConvertedManaCost") val faceConvertedManaCost: Float?,
     @SerializedName("flavorText") val flavorText: String?,
-    @SerializedName("foreignData") val foreignData: List<RemoteForeignData>?,
+    @SerializedName("foreignData") val foreignData: List<ForeignData>?,
     @SerializedName("frameEffect") val frameEffect: String?,
     @SerializedName("frameVersion") val frameVersion: String?,
     @SerializedName("hand") val hand: String?,
@@ -24,7 +24,7 @@ data class RemoteCard(
     @SerializedName("isReserved") val isReserved: Boolean?,
     @SerializedName("isTimeshifted") val isTimeshifted: Boolean?,
     @SerializedName("layout") val layout: String?,
-    @SerializedName("legalities") val legalities: RemoteLegalities?,
+    @SerializedName("legalities") val legalities: Legalities?,
     @SerializedName("life") val life: String?,
     @SerializedName("loyalty") val loyalty: String?,
     @SerializedName("manaCost") val manaCost: String?,
@@ -37,7 +37,7 @@ data class RemoteCard(
     @SerializedName("power") val power: String?,
     @SerializedName("printings") val printings: List<String>?,
     @SerializedName("rarity") val rarity: String?,
-    @SerializedName("rulings") val rulings: List<RemoteRulings>?,
+    @SerializedName("rulings") val rulings: List<Rulings>?,
     @SerializedName("scryfallId") val scryfallId: String?,
     @SerializedName("scryfallOracleId") val scryfallOracleId: String?,
     @SerializedName("scryfallIllustrationId") val scryfallIllustrationId: String?,
@@ -57,7 +57,7 @@ data class RemoteCard(
     @SerializedName("watermark") val watermark: String?
 ) {
     // https://mtgjson.com/structures/foreign-data/
-    data class RemoteForeignData(
+    data class ForeignData(
         @SerializedName("flavorText") val flavorText: String?,
         @SerializedName("language") val language: String?,
         @SerializedName("multiverseId") val multiverseId: Int?,
@@ -66,7 +66,7 @@ data class RemoteCard(
     )
 
     // https://mtgjson.com/structures/legalities/
-    data class RemoteLegalities(
+    data class Legalities(
         @SerializedName("commander") val commander: String?,
         @SerializedName("duel") val duel: String?,
         @SerializedName("frontier") val frontier: String?,
@@ -79,7 +79,7 @@ data class RemoteCard(
     )
 
     // https://mtgjson.com/structures/rulings/
-    data class RemoteRulings(
+    data class Rulings(
         @SerializedName("date") val date: String?,
         @SerializedName("text") val text: String?
     )

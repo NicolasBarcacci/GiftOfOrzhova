@@ -35,8 +35,8 @@ data class LocalSet(
     @ColumnInfo(name = SETS_COLUMN_BASE_SET_SIZE) val baseSetSize: Int?,
     @ColumnInfo(name = SETS_COLUMN_TOTAL_SET_SIZE) val totalSetSize: Int?,
     @ColumnInfo(name = SETS_COLUMN_IS_UP_TO_DATE) val isUpToDate: Boolean?,
-    @Embedded val otherIds: OtherIds,
-    @Embedded val remoteVersion: LocalVersion?
+    @Embedded val remoteVersion: Version?,
+    @Embedded val otherIds: OtherIds?
 ) {
     data class OtherIds(
         @ColumnInfo(name = SETS_COLUMN_CODE_V3) val codeV3: String?,
@@ -44,7 +44,7 @@ data class LocalSet(
         @ColumnInfo(name = SETS_COLUMN_TGCPLAYER_GROUP_ID) val tcgplayerGroupId: Int?
     )
 
-    data class LocalVersion(
+    data class Version(
         @SerializedName(SETS_COLUMN_DATE) val date: String?,
         @SerializedName(SETS_COLUMN_VERSION) val version: String?
     )

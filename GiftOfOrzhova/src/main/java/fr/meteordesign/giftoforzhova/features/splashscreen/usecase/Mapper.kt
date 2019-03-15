@@ -17,20 +17,75 @@ fun toLocalSet(remoteSet: RemoteSet, isUpToDate: Boolean): LocalSet = with(remot
         baseSetSize,
         totalSetSize,
         isUpToDate,
+        LocalSet.Version(
+            meta?.date,
+            meta?.version
+        ),
         LocalSet.OtherIds(
             codeV3,
             mtgoCode,
             tcgplayerGroupId
-        ),
-        LocalSet.Version(
-            meta?.date,
-            meta?.version
         )
     )
 }
 
-fun toLocalCard(setCode: String, remoteCard: RemoteCard): LocalCard = LocalCard(
-    multiverseId = remoteCard.multiverseId!!,
-    setCode = setCode,
-    name = remoteCard.name
-)
+fun toLocalCard(setCode: String, remoteCard: RemoteCard): LocalCard = with(remoteCard) {
+    LocalCard(
+        remoteCard.multiverseId!!,
+        setCode,
+        remoteCard.name,
+        LocalCard.GameplayFields(
+            side,
+            manaCost,
+            convertedManaCost,
+            faceConvertedManaCost,
+            colors,
+            colorIdentity,
+            colorIndicator,
+            type,
+            types,
+            subtypes,
+            supertypes,
+            rarity,
+            text,
+            life,
+            hand,
+            loyalty,
+            layout,
+            power,
+            toughness
+        ),
+        LocalCard.PrintFields(
+            artist,
+            names,
+            originalText,
+            originalType,
+            flavorText,
+            watermark,
+            number,
+            borderColor,
+            frameEffect,
+            frameVersion,
+            hasFoil,
+            hasNonFoil,
+            isOversized,
+            printings
+        ),
+        LocalCard.OtherIds(
+            scryfallId,
+            scryfallOracleId,
+            scryfallIllustrationId,
+            tcgplayerProductId,
+            tcgplayerPurchaseUrl,
+            uuid,
+            uuidV421,
+            variations
+        ),
+        LocalCard.Misc(
+            duelDeck,
+            isReserved,
+            isTimeshifted,
+            isStarter
+        )
+    )
+}
