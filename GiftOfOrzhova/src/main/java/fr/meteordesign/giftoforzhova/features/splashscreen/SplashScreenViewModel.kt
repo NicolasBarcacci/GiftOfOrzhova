@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import fr.giftoforzhova.common.SingleLiveEvent
-import fr.meteordesign.giftoforzhova.managers.AppThemeManager
+import fr.giftoforzhova.common.logger.Logger
 import fr.meteordesign.giftoforzhova.features.splashscreen.usecase.CardCachingUseCase
+import fr.meteordesign.giftoforzhova.managers.AppThemeManager
 import fr.meteordesign.giftoforzhova.managers.WifiManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -35,6 +36,28 @@ class SplashScreenViewModel @Inject constructor(
     init {
         _state.value = SplashScreenActivity.State.Init(appThemeManager)
         _cacheState.value = SplashScreenActivity.CacheState.Init
+
+        checkNewVersion()
+    }
+
+    private fun checkNewVersion() {
+        disposable = cardCachingUseCase.isThereANewVersion()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::onCheckNewVersion, ::onCheckNewVersionError)
+    }
+
+    private fun onCheckNewVersion(newVersion: Boolean) {
+        if (newVersion) {
+            // TODO
+            Logger.d("New version available !")
+        } else {
+            _event.value = Event.Ready
+        }
+    }
+
+    private fun onCheckNewVersionError(throwable: Throwable) {
+        // TODO manage
+        Logger.e("mytag", throwable)
     }
 
     fun cacheCards() {

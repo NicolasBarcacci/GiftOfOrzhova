@@ -1,6 +1,7 @@
 package fr.meteordesign.repository.repositories.cards.remote
 
 import android.content.SharedPreferences
+import fr.giftoforzhova.common.Optional
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
 import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
 import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteVersion
@@ -19,7 +20,9 @@ class RemoteCardsRepositoryMtgJsonImpl @Inject constructor(
     private val api: MtgJsonCardsApi
 ) : RemoteCardsRepository {
 
-    override fun getSavedVersion(): String? = preferences.getString(KEY_REMOTE_VERSION, null)
+    override fun getSavedVersion(): Single<Optional<String>> = Single.just(
+        Optional(preferences.getString(KEY_REMOTE_VERSION, null))
+    )
 
     override fun getCurrentVersion(): Single<RemoteVersion> =
         api.getVersion()

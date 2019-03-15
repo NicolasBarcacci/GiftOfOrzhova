@@ -1,16 +1,28 @@
 package fr.meteordesign.giftoforzhova.features.splashscreen.usecase
 
+import fr.giftoforzhova.common.Optional
 import fr.giftoforzhova.common.logger.Logger
 import fr.meteordesign.repository.repositories.cards.LocalCardRepository
 import fr.meteordesign.repository.repositories.cards.RemoteCardsRepository
 import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteSet
+import fr.meteordesign.repository.repositories.cards.remote.entity.RemoteVersion
 import io.reactivex.Completable
+import io.reactivex.Single
+import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
 class CardCachingUseCase @Inject constructor(
     private val remoteCardsRepository: RemoteCardsRepository,
     private val localCardRepository: LocalCardRepository
 ) {
+    fun isThereANewVersion(): Single<Boolean> = Single.zip(
+        remoteCardsRepository.getSavedVersion(),
+        remoteCardsRepository.getCurrentVersion(),
+        BiFunction { savedVersion: Optional<String>, remoteVersion: RemoteVersion ->
+            savedVersion.value != remoteVersion.version
+        }
+    )
+
     fun cacheCards(listener: Listener): Completable = remoteCardsRepository.getSets()
         .map { removedSavedSets(it) }
         .flattenAsFlowable { sets -> sets.also { listener.onSetToCacheCount(sets.size) } }
