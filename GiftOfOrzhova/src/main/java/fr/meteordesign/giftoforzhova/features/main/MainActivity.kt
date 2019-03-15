@@ -19,7 +19,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import fr.giftoforzhova.common.extentions.load
 import fr.giftoforzhova.common.navigation.Navigator
 import fr.meteordesign.giftoforzhova.R
-import fr.meteordesign.ui.UiAppTheme
+import fr.meteordesign.giftoforzhova.features.apptheme.AppThemeManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import javax.inject.Inject
@@ -35,14 +35,14 @@ class MainActivity : AppCompatActivity(),
     @Inject
     lateinit var viewModel: MainViewModel
 
-    private lateinit var appTheme: UiAppTheme
+    private lateinit var appThemeManager: AppThemeManager
 
     @Inject
     lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
-        appTheme = initTheme()
+        appThemeManager = initTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -52,14 +52,17 @@ class MainActivity : AppCompatActivity(),
         navigator.navigateToCardList(this)
     }
 
-    private fun initTheme(): UiAppTheme = viewModel.appTheme.also {
+    private fun initTheme(): AppThemeManager = viewModel.appThemeManager.also {
         setTheme(it.themeResId)
     }
 
     private fun initToolbar() {
-        val isDarkTheme = resources.getBoolean(appTheme.darkThemeOnPrimaryResId)
         toolbar_main_stub.apply {
-            layoutResource = if (isDarkTheme) R.layout.appbarlayout_main_dark else R.layout.appbarlayout_main_light
+            layoutResource = if (appThemeManager.isDarkTheme) {
+                R.layout.appbarlayout_main_dark
+            } else {
+                R.layout.appbarlayout_main_light
+            }
             inflate()
         }
         setSupportActionBar(toolbar_main)
@@ -76,7 +79,7 @@ class MainActivity : AppCompatActivity(),
         drawer_main_drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        (nav_main_navigationView.getHeaderView(0) as ImageView).load(appTheme.guildBanner)
+        (nav_main_navigationView.getHeaderView(0) as ImageView).load(appThemeManager.guildBannerResId)
 
         nav_main_navigationView.setNavigationItemSelectedListener(this)
     }
@@ -104,6 +107,6 @@ class MainActivity : AppCompatActivity(),
 
     companion object {
         fun newIntent(context: Context): Intent =
-                Intent(context, MainActivity::class.java)
+            Intent(context, MainActivity::class.java)
     }
 }

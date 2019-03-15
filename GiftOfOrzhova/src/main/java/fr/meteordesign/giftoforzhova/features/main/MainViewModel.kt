@@ -1,12 +1,7 @@
 package fr.meteordesign.giftoforzhova.features.main
 
 import androidx.lifecycle.ViewModel
-import fr.meteordesign.giftoforzhova.features.apptheme.usecase.AppThemeUseCase
-import fr.meteordesign.ui.UiAppTheme
+import fr.meteordesign.giftoforzhova.features.apptheme.AppThemeManager
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
-    appThemeUseCase: AppThemeUseCase
-) : ViewModel() {
-    val appTheme: UiAppTheme = appThemeUseCase.getAppTheme()
-}
+class MainViewModel @Inject constructor(val appThemeManager: AppThemeManager) : ViewModel()
