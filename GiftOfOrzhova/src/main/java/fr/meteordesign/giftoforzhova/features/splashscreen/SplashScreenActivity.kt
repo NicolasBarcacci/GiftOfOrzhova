@@ -39,7 +39,7 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     }
 
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
-        SplashScreenViewModel.Event.START_MAIN_ACTIVITY -> startActivity(MainActivity.newIntent(this))
+        SplashScreenViewModel.Event.Ready -> startActivity(MainActivity.newIntent(this))
     }
 
     sealed class State {

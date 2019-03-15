@@ -33,7 +33,7 @@ class SplashScreenViewModel @Inject constructor(
         disposable?.dispose()
         disposable = cardCachingUseCase.cacheCards(this)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { _event.value = Event.START_MAIN_ACTIVITY }
+            .subscribe { _event.value = Event.Ready }
     }
 
     override fun onSetToCacheCount(count: Int) {
@@ -57,6 +57,6 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     sealed class Event {
-        object START_MAIN_ACTIVITY : Event()
+        object Ready : Event()
     }
 }
