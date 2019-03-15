@@ -17,7 +17,6 @@ data class RemoteSet(
     @SerializedName("name") val name: String?,
     @SerializedName("releaseDate") val releaseDate: String?,
     @SerializedName("tcgplayerGroupId") val tcgplayerGroupId: Int?,
-    @SerializedName("tokens") val tokens: List<RemoteToken>?,
     @SerializedName("totalSetSize") val totalSetSize: Int?,
     @SerializedName("type") val type: String?
 ) {
