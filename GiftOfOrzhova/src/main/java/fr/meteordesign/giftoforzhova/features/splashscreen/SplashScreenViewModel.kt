@@ -36,8 +36,8 @@ class SplashScreenViewModel @Inject constructor(
         _cacheState.value = SplashScreenActivity.CacheState.Init
     }
 
-    fun start() {
-        Logger.d("MYTAG start")
+    fun startDownload() {
+        Logger.d("MYTAG startDownload")
         checkAppIsInitialised()
     }
 
@@ -56,7 +56,7 @@ class SplashScreenViewModel @Inject constructor(
 
             } else {
                 vmState = VmState.APP_NOT_INITIALIZED
-                _event.value = Event.OnInit
+                _event.value = Event.Initialize
             }
         }
         VmState.APP_NOT_INITIALIZED -> forbidden()
@@ -104,16 +104,16 @@ class SplashScreenViewModel @Inject constructor(
         // TODO manage
     }
 
-    fun startDownload(): Unit = when (vmState) {
+    fun continueDownload(): Unit = when (vmState) {
         VmState.CHECKING_INITIALISATION -> forbidden()
         VmState.APP_NOT_INITIALIZED -> {
-            Logger.d("MYTAG startDownload vmState=$vmState")
+            Logger.d("MYTAG continueDownload vmState=$vmState")
             vmState = VmState.DOWNLOADING
             cacheCards()
         }
         VmState.APP_INITIALIZED -> forbidden()
         VmState.NEW_VERSION -> {
-            Logger.d("MYTAG startDownload vmState=$vmState")
+            Logger.d("MYTAG continueDownload vmState=$vmState")
             vmState = VmState.DOWNLOADING
             cacheCards()
         }
@@ -177,7 +177,7 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     sealed class Event {
-        object OnInit : Event()
+        object Initialize : Event()
         object NewUpdates : Event()
         object Terminate : Event()
         object Continue : Event()

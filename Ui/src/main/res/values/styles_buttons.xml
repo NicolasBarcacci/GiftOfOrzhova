@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RaisedButton" parent="Theme.Design" />
+
+    <style name="RaisedButton.Blue">
+        <item name="colorButtonNormal">@color/blue</item>
+    </style>
+
+    <style name="FlatButton" parent="Widget.AppCompat.Button.Borderless" />
+</resources>

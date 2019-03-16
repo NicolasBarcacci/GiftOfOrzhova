@@ -6,7 +6,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import fr.meteordesign.ui.R
 
-class ModalBottomSheetDialog : BottomSheetDialogFragment() {
+open class ModalBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun getTheme(): Int = R.style.ModalBottomSheetDialog
 

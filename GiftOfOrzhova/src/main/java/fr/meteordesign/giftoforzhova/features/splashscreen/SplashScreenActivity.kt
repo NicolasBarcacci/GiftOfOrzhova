@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
 import fr.meteordesign.giftoforzhova.features.main.MainActivity
+import fr.meteordesign.giftoforzhova.features.splashscreen.dialogs.TestDialog
 import fr.meteordesign.giftoforzhova.managers.AppThemeManager
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
@@ -29,7 +30,9 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         viewModel.cacheState.observe(this, Observer { onCacheStateChange(it) })
         viewModel.event.observe(this, Observer { onEvent(it) })
 
-        viewModel.start()
+        viewModel.startDownload()
+
+        TestDialog().show(supportFragmentManager, null)
     }
 
     private fun onStateChange(state: State): Unit = when (state) {
@@ -62,9 +65,9 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
     }
 
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
-        SplashScreenViewModel.Event.OnInit -> {
+        SplashScreenViewModel.Event.Initialize -> {
             // TODO show init popup
-            viewModel.abortDownload()
+            viewModel.continueDownload()
         }
         SplashScreenViewModel.Event.NewUpdates -> {
             // TODO show update popup

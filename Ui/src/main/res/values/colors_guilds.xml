@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primaryDark_azorius">#0072b0</color>
+    <color name="primary_azorius">#01a0e2</color>
+    <color name="primaryLight_azorius">#62d1ff</color>
+    <item name="dark_theme_on_primary_azorius" type="bool">false</item>
+    <color name="accentDark_azorius">#bab7a5</color>
+    <color name="accent_azorius">#ece9d6</color>
+    <color name="accentLight_azorius">#ffffff</color>
+    <item name="dark_theme_on_accent_azorius" type="bool">false</item>
+
+    <color name="primaryDark_boros">#b0ab92</color>
+    <color name="primary_boros">#e2ddc2</color>
+    <color name="primaryLight_boros">#fffff5</color>
+    <item name="dark_theme_on_primary_boros" type="bool">false</item>
+    <color name="accentDark_boros">#53000b</color>
+    <color name="accent_boros">#852032</color>
+    <color name="accentLight_boros">#b9505b</color>
+    <item name="dark_theme_on_accent_boros" type="bool">true</item>
+
+    <color name="primaryDark_dimir">#11222f</color>
+    <color name="primary_dimir">#394a58</color>
+    <color name="primaryLight_dimir">#647685</color>
+    <item name="dark_theme_on_primary_dimir" type="bool">true</item>
+    <color name="accentDark_dimir">#224089</color>
+    <color name="accent_dimir">#586aba</color>
+    <color name="accentLight_dimir">#8a98ed</color>
+    <item name="dark_theme_on_accent_dimir" type="bool">true</item>
+
+    <color name="primaryDark_golgari">#000000</color>
+    <color name="primary_golgari">#08160a</color>
+    <color name="primaryLight_golgari">#303c32</color>
+    <item name="dark_theme_on_primary_golgari" type="bool">true</item>
+    <color name="accentDark_golgari">#003701</color>
+    <color name="accent_golgari">#23622b</color>
+    <color name="accentLight_golgari">#529055</color>
+    <item name="dark_theme_on_accent_golgari" type="bool">true</item>
+
+    <color name="primaryDark_gruul">#627d00</color>
+    <color name="primary_gruul">#93ac27</color>
+    <color name="primaryLight_gruul">#c6de5a</color>
+    <item name="dark_theme_on_primary_gruul" type="bool">false</item>
+    <color name="accentDark_gruul">#270000</color>
+    <color name="accent_gruul">#4a1e1d</color>
+    <color name="accentLight_gruul">#784744</color>
+    <item name="dark_theme_on_accent_gruul" type="bool">true</item>
+
+    <color name="primaryDark_izzet">#00001e</color>
+    <color name="primary_izzet">#1f2545</color>
+    <color name="primaryLight_izzet">#494d70</color>
+    <item name="dark_theme_on_primary_izzet" type="bool">true</item>
+    <color name="accentDark_izzet">#900005</color>
+    <color name="accent_izzet">#c9282d</color>
+    <color name="accentLight_izzet">#ff5f57</color>
+    <item name="dark_theme_on_accent_izzet" type="bool">true</item>
+
+    <color name="primaryDark_orzhov">#302636</color>
+    <color name="primary_orzhov">#594e60</color>
+    <color name="primaryLight_orzhov">#867a8d</color>
+    <item name="dark_theme_on_primary_orzhov" type="bool">true</item>
+    <color name="accentDark_orzhov">#aaa58c</color>
+    <color name="accent_orzhov">#dcd6bc</color>
+    <color name="accentLight_orzhov">#ffffee</color>
+    <item name="dark_theme_on_accent_orzhov" type="bool">false</item>
+
+    <color name="primaryDark_rakdos">#000000</color>
+    <color name="primary_rakdos">#160f0f</color>
+    <color name="primaryLight_rakdos">#3c3535</color>
+    <item name="dark_theme_on_primary_rakdos" type="bool">true</item>
+    <color name="accentDark_rakdos">#530000</color>
+    <color name="accent_rakdos">#861619</color>
+    <color name="accentLight_rakdos">#bc4940</color>
+    <item name="dark_theme_on_accent_rakdos" type="bool">true</item>
+
+    <color name="primaryDark_selesnya">#002200</color>
+    <color name="primary_selesnya">#094923</color>
+    <color name="primaryLight_selesnya">#3b754b</color>
+    <item name="dark_theme_on_primary_selesnya" type="bool">true</item>
+    <color name="accentDark_selesnya">#b8b299</color>
+    <color name="accent_selesnya">#eae4ca</color>
+    <color name="accentLight_selesnya">#fffffd</color>
+    <item name="dark_theme_on_accent_selesnya" type="bool">false</item>
+
+    <color name="primaryDark_simic">#005c55</color>
+    <color name="primary_simic">#088a81</color>
+    <color name="primaryLight_simic">#50bbb0</color>
+    <item name="dark_theme_on_primary_simic" type="bool">false</item>
+    <color name="accentDark_simic">#001500</color>
+    <color name="accent_simic">#1c391b</color>
+    <color name="accentLight_simic">#456342</color>
+    <item name="dark_theme_on_accent_simic" type="bool">true</item>
+</resources>
