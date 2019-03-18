@@ -10,6 +10,7 @@ enum class UiAppTheme(
     @ColorRes val primaryColor: Int,
     @BoolRes val darkThemeOnPrimaryResId: Int,
     @BoolRes val darkThemeOnAccentResId: Int,
+    @DrawableRes val guildSymbol: Int,
     @DrawableRes val guildBanner: Int
 ) {
     AZORIUS(
@@ -17,6 +18,7 @@ enum class UiAppTheme(
         R.color.primaryDark_azorius,
         R.bool.dark_theme_on_primary_azorius,
         R.bool.dark_theme_on_accent_azorius,
+        R.drawable.symbol_azorius,
         R.drawable.banner_azorius
     ),
     BOROS(
@@ -24,6 +26,7 @@ enum class UiAppTheme(
         R.color.primary_boros,
         R.bool.dark_theme_on_primary_boros,
         R.bool.dark_theme_on_accent_boros,
+        R.drawable.symbol_boros,
         R.drawable.banner_boros
     ),
     DIMIR(
@@ -31,6 +34,7 @@ enum class UiAppTheme(
         R.color.primary_dimir,
         R.bool.dark_theme_on_primary_dimir,
         R.bool.dark_theme_on_accent_dimir,
+        R.drawable.symbol_dimir,
         R.drawable.banner_dimir
     ),
     GOLGARI
@@ -39,6 +43,7 @@ enum class UiAppTheme(
         R.color.primary_golgari,
         R.bool.dark_theme_on_primary_golgari,
         R.bool.dark_theme_on_accent_golgari,
+        R.drawable.symbol_golgari,
         R.drawable.banner_golgari
     ),
     GRUUL(
@@ -46,6 +51,7 @@ enum class UiAppTheme(
         R.color.primary_gruul,
         R.bool.dark_theme_on_primary_gruul,
         R.bool.dark_theme_on_accent_gruul,
+        R.drawable.symbol_gruul,
         R.drawable.banner_gruul
     ),
     IZZET(
@@ -53,6 +59,7 @@ enum class UiAppTheme(
         R.color.primary_izzet,
         R.bool.dark_theme_on_primary_izzet,
         R.bool.dark_theme_on_accent_izzet,
+        R.drawable.symbol_izzet,
         R.drawable.banner_izzet
     ),
     ORZHOV(
@@ -60,6 +67,7 @@ enum class UiAppTheme(
         R.color.primary_orzhov,
         R.bool.dark_theme_on_primary_orzhov,
         R.bool.dark_theme_on_accent_orzhov,
+        R.drawable.symbol_orzhov,
         R.drawable.banner_orzhov
     ),
     RAKDOS(
@@ -67,6 +75,7 @@ enum class UiAppTheme(
         R.color.primary_rakdos,
         R.bool.dark_theme_on_primary_rakdos,
         R.bool.dark_theme_on_accent_rakdos,
+        R.drawable.symbol_rakdos,
         R.drawable.banner_rakdos
     ),
     SELESNYA(
@@ -74,6 +83,7 @@ enum class UiAppTheme(
         R.color.primary_selesnya,
         R.bool.dark_theme_on_primary_selesnya,
         R.bool.dark_theme_on_accent_selesnya,
+        R.drawable.symbol_selesnya,
         R.drawable.banner_selesnya
     ),
     SIMIC(
@@ -81,6 +91,7 @@ enum class UiAppTheme(
         R.color.primary_simic,
         R.bool.dark_theme_on_primary_simic,
         R.bool.dark_theme_on_accent_simic,
+        R.drawable.symbol_simic,
         R.drawable.banner_simic
     )
 }

@@ -26,11 +26,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/appName_SplashScreen_guideLine" />
 
-    <ProgressBar
-        android:id="@+id/download_splashScreen_progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <ImageView
+        android:id="@+id/guildSymbol_splashScreen_ImageView"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

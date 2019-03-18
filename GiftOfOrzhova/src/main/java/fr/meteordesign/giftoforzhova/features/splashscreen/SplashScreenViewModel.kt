@@ -16,8 +16,8 @@ import javax.inject.Inject
 private val ANIMATION_TIME_MILLI = TimeUnit.SECONDS.toMillis(2)
 
 class SplashScreenViewModel @Inject constructor(
-    appThemeManager: AppThemeManager,
-    private val cardChacheManager: CardCacheManager
+    private val appThemeManager: AppThemeManager,
+    private val cardCacheManager: CardCacheManager
 ) : ViewModel() {
 
     private var handler = Handler()
@@ -32,21 +32,20 @@ class SplashScreenViewModel @Inject constructor(
 
     init {
         _state.value = SplashScreenActivity.State.Init(appThemeManager)
-
         checkAppIsInitialised()
     }
 
     private fun checkAppIsInitialised() {
-        disposable = cardChacheManager.isAppInitialized()
+        disposable = cardCacheManager.isAppInitialized()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onCheckAppIsInitialised, ::onCheckAppIsInitialisedError)
     }
 
     private fun onCheckAppIsInitialised(isInitialised: Boolean) {
         if (isInitialised) {
-            startAnimation()
+            startApplication()
         } else {
-            Event.ShowAnimation(ANIMATION_TIME_MILLI)
+            _event.value = Event.InitializationWarning
         }
     }
 
@@ -56,19 +55,15 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     fun onUserPressContinue() {
-        startAnimation()
+        startApplication()
     }
 
-    fun OnUserPressAbort() {
+    fun onUserPressAbort() {
         _event.value = Event.Terminate
     }
 
-    override fun onCleared() {
-        disposable?.dispose()
-        super.onCleared()
-    }
-
-    private fun startAnimation() {
+    private fun startApplication() {
+        _event.value = Event.ShowAnimation(appThemeManager, ANIMATION_TIME_MILLI)
         handler.postDelayed(::onAnimationEnd, ANIMATION_TIME_MILLI)
     }
 
@@ -76,9 +71,14 @@ class SplashScreenViewModel @Inject constructor(
         _event.value = Event.Continue
     }
 
+    override fun onCleared() {
+        disposable?.dispose()
+        super.onCleared()
+    }
+
     sealed class Event {
-        object InitialiationWarning : Event()
-        class ShowAnimation(animationTimeMilli: Long) : Event()
+        object InitializationWarning : Event()
+        class ShowAnimation(val appThemeManager: AppThemeManager, val animationTimeMilli: Long) : Event()
         object Terminate : Event()
         object Continue : Event()
     }

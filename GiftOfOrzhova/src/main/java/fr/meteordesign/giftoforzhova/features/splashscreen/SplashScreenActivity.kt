@@ -7,11 +7,12 @@ import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
 import fr.meteordesign.giftoforzhova.features.main.MainActivity
+import fr.meteordesign.giftoforzhova.features.splashscreen.dialogs.InitializationWarningDialog
 import fr.meteordesign.giftoforzhova.managers.appthememanager.AppThemeManager
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
 
-class SplashScreenActivity : DaggerAppCompatActivity() {
+class SplashScreenActivity : DaggerAppCompatActivity(), InitializationWarningDialog.Listener {
 
     @Inject
     lateinit var viewModel: SplashScreenViewModel
@@ -39,16 +40,17 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         }
     }
 
-    private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
-        SplashScreenViewModel.Event.InitialiationWarning -> {
-            // TODO show init popup
-            viewModel.onUserPressContinue()
+    private fun onEvent(event: SplashScreenViewModel.Event): Any = when (event) {
+        SplashScreenViewModel.Event.InitializationWarning -> {
+            InitializationWarningDialog.newInstance().show(supportFragmentManager, "")
         }
         is SplashScreenViewModel.Event.ShowAnimation -> {
-            // TODO Display animation
+            guildSymbol_splashScreen_ImageView.apply {
+                visibility = View.VISIBLE
+                setImageResource(event.appThemeManager.guildSymbolResId)
+            }
         }
         SplashScreenViewModel.Event.Terminate -> {
-            // TODO show error message
             finish()
         }
         SplashScreenViewModel.Event.Continue -> {
@@ -57,11 +59,11 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         }
     }
 
+    override fun onPositiveClick(): Unit = viewModel.onUserPressContinue()
+
+    override fun onNegativeClick(): Unit = viewModel.onUserPressAbort()
+
     sealed class State {
         class Init(val appThemeManager: AppThemeManager) : State()
-    }
-
-    sealed class CacheState {
-        object Init : CacheState()
     }
 }

@@ -24,5 +24,8 @@ class AppThemeManager @Inject constructor(
     val colorOnPrimaryColor = if (isDarkTheme) R.color.white else R.color.black
 
     @DrawableRes
+    val guildSymbolResId = uiAppTheme.guildSymbol
+
+    @DrawableRes
     val guildBannerResId = uiAppTheme.guildBanner
 }
