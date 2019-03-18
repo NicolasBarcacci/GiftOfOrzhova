@@ -1,4 +1,4 @@
-package fr.meteordesign.giftoforzhova.features.splashscreen.usecase
+package fr.meteordesign.giftoforzhova.managers.cardcachemanager.usecase
 
 import fr.giftoforzhova.common.Optional
 import fr.giftoforzhova.common.logger.Logger
@@ -46,13 +46,23 @@ class CardCachingUseCase @Inject constructor(
     private fun cacheSetAndCards(remoteSet: RemoteSet, listener: Listener): Completable {
         val setCode = remoteSet.code!!
 
-        localCardRepository.saveSet(toLocalSet(remoteSet, false))
+        localCardRepository.saveSet(
+            toLocalSet(
+                remoteSet,
+                false
+            )
+        )
         remoteSet.cards?.filterNot { it.multiverseId == null }
             ?.map { toLocalCard(setCode, it) }
             ?.forEach {
                 localCardRepository.saveCard(it)
             }
-        localCardRepository.saveSet(toLocalSet(remoteSet, true))
+        localCardRepository.saveSet(
+            toLocalSet(
+                remoteSet,
+                true
+            )
+        )
 
         listener.onSetCached()
         return Completable.complete()

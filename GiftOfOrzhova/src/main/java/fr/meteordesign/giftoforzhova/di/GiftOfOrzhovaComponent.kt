@@ -4,8 +4,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import fr.meteordesign.giftoforzhova.GiftOfOrzhovaApplication
-import fr.meteordesign.repository.repositories.appsettings.di.AppSettingsRepositoryModule
-import fr.meteordesign.repository.repositories.cards.di.LocalCardsRepositoryModule
+import fr.meteordesign.repository.repositories.di.RepositoriesModule
 import javax.inject.Singleton
 
 @Singleton
@@ -14,8 +13,7 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         GiftOfOrzhovaModule::class,
         ActivityInjector::class,
-        AppSettingsRepositoryModule::class,
-        LocalCardsRepositoryModule::class
+        RepositoriesModule::class
     ]
 )
 interface GiftOfOrzhovaComponent : AndroidInjector<GiftOfOrzhovaApplication> {

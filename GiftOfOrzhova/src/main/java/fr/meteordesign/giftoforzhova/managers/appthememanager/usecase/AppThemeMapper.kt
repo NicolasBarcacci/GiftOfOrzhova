@@ -1,4 +1,4 @@
-package fr.meteordesign.giftoforzhova.usecase.apptheme
+package fr.meteordesign.giftoforzhova.managers.appthememanager.usecase
 
 import fr.meteordesign.repository.repositories.appsettings.entity.RepoAppTheme
 import fr.meteordesign.ui.UiAppTheme

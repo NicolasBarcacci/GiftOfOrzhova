@@ -7,7 +7,7 @@ import dagger.Provides
 import fr.giftoforzhova.common.navigation.Navigator
 import fr.meteordesign.giftoforzhova.GiftOfOrzhovaApplication
 import fr.meteordesign.giftoforzhova.navigation.NavigatorImpl
-import fr.meteordesign.giftoforzhova.usecase.apptheme.AppThemeUseCase
+import fr.meteordesign.giftoforzhova.managers.appthememanager.usecase.AppThemeUseCase
 import fr.meteordesign.ui.UiAppTheme
 
 @Module

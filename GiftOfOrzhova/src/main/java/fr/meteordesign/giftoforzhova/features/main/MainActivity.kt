@@ -19,7 +19,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import fr.giftoforzhova.common.extentions.load
 import fr.giftoforzhova.common.navigation.Navigator
 import fr.meteordesign.giftoforzhova.R
-import fr.meteordesign.giftoforzhova.managers.AppThemeManager
+import fr.meteordesign.giftoforzhova.managers.appthememanager.AppThemeManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import javax.inject.Inject

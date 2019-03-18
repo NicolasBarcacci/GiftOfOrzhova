@@ -2,14 +2,12 @@ package fr.meteordesign.giftoforzhova.features.splashscreen
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerAppCompatActivity
 import fr.meteordesign.giftoforzhova.R
 import fr.meteordesign.giftoforzhova.features.main.MainActivity
-import fr.meteordesign.giftoforzhova.features.splashscreen.dialogs.TestDialog
-import fr.meteordesign.giftoforzhova.managers.AppThemeManager
+import fr.meteordesign.giftoforzhova.managers.appthememanager.AppThemeManager
 import kotlinx.android.synthetic.main.activity_splashscreen.*
 import javax.inject.Inject
 
@@ -24,15 +22,8 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
-        Toast.makeText(this, "aaaaaa", Toast.LENGTH_SHORT).show()
-
         viewModel.state.observe(this, Observer { onStateChange(it) })
-        viewModel.cacheState.observe(this, Observer { onCacheStateChange(it) })
         viewModel.event.observe(this, Observer { onEvent(it) })
-
-        viewModel.startDownload()
-
-        TestDialog().show(supportFragmentManager, null)
     }
 
     private fun onStateChange(state: State): Unit = when (state) {
@@ -48,29 +39,13 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         }
     }
 
-    private fun onCacheStateChange(cacheState: CacheState): Unit = when (cacheState) {
-        CacheState.Init -> showIdleState()
-        is CacheState.Downloading -> showDownloadingState(cacheState)
-    }
-
-    private fun showIdleState() {
-        download_splashScreen_progressBar.visibility = View.GONE
-    }
-
-    private fun showDownloadingState(cacheState: CacheState.Downloading) {
-        download_splashScreen_progressBar.visibility = View.VISIBLE
-        download_splashScreen_progressBar.isIndeterminate = cacheState.isIndeterminate
-        download_splashScreen_progressBar.max = cacheState.count
-        download_splashScreen_progressBar.progress = cacheState.progress
-    }
-
     private fun onEvent(event: SplashScreenViewModel.Event): Unit = when (event) {
-        SplashScreenViewModel.Event.Initialize -> {
+        SplashScreenViewModel.Event.InitialiationWarning -> {
             // TODO show init popup
-            viewModel.continueDownload()
+            viewModel.onUserPressContinue()
         }
-        SplashScreenViewModel.Event.NewUpdates -> {
-            // TODO show update popup
+        is SplashScreenViewModel.Event.ShowAnimation -> {
+            // TODO Display animation
         }
         SplashScreenViewModel.Event.Terminate -> {
             // TODO show error message
@@ -88,6 +63,5 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
 
     sealed class CacheState {
         object Init : CacheState()
-        class Downloading(val isIndeterminate: Boolean, val progress: Int, val count: Int) : CacheState()
     }
 }

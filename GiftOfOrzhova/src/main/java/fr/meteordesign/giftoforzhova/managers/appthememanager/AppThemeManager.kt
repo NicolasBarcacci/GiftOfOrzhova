@@ -1,4 +1,4 @@
-package fr.meteordesign.giftoforzhova.managers
+package fr.meteordesign.giftoforzhova.managers.appthememanager
 
 import android.content.Context
 import androidx.annotation.ColorRes

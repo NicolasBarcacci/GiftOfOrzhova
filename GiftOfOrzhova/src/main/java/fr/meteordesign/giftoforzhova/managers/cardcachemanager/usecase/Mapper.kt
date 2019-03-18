@@ -1,4 +1,4 @@
-package fr.meteordesign.giftoforzhova.features.splashscreen.usecase
+package fr.meteordesign.giftoforzhova.managers.cardcachemanager.usecase
 
 import fr.meteordesign.repository.repositories.cards.local.entity.LocalCard
 import fr.meteordesign.repository.repositories.cards.local.entity.LocalSet
