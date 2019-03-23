@@ -32,6 +32,7 @@ class SplashScreenViewModel @Inject constructor(
 
     init {
         _state.value = SplashScreenActivity.State.Init(appThemeManager)
+
         checkAppIsInitialised()
     }
 

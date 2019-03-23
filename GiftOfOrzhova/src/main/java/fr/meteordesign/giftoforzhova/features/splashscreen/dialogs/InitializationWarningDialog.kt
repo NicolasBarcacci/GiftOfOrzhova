@@ -10,14 +10,14 @@ class InitializationWarningDialog : DialogFragment() {
 
     private lateinit var listener: InitializationWarningDialog.Listener
 
+    companion object {
+        fun newInstance(): InitializationWarningDialog = InitializationWarningDialog()
+    }
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         listener = context as? InitializationWarningDialog.Listener
             ?: throw IllegalStateException("$context must implements InitializationWarningDialog.Listener")
-    }
-
-    companion object {
-        fun newInstance(): InitializationWarningDialog = InitializationWarningDialog()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
